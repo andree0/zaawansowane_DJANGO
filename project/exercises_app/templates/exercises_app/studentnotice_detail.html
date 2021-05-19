@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Dane ucznia</h1>
+    <h2>Imię: {{ student.first_name }}</h2>
+    <h2>Nazwisko: {{ student.last_name }}</h2>
+    <h2>Klasa: {{ student.get_school_class_display }}</h2>
+<!--    <ul>-->
+<!--        {% for grade in student.grades.all %}-->
+<!--            <li><a href="{% url 'grades_student' student_id=student.pk subject_id=grade.pk %}">{{ grade.name }}</a> | Nauczyciel: {{ grade.teacher_name }}</li>-->
+<!--        {% endfor %}-->
+<!--    </ul>-->
+<ul>
+{% for notice in notices %}
+<li>{{ notice.from_who }} ---> {{ notice.to_who }} : {{ notice.content }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

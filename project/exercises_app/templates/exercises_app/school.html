@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Szkoła podstawowa nr 1 im. Chucka Norrisa.</h1>
+    <h2>Klasy:</h2>
+    <ul>
+        {% for key, value in school_classes %}
+            <li><a href="{% url 'school-class' school_class=key %}">{{ value }}</a></li>
+        {% endfor %}
+    </ul>
+{{ company }}
+{{ author }}
+{{ ip_address }}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+<div style="display: flex; flex-direction: column; align-items: center; ">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Szukaj">
+    </form>
+</div>
+
+    <style>
+        table {margin: auto; }
+        th, td {text-align: center; padding: 8px; }
+    </style>
+    <br>
+    <br>
+    <table>
+        <caption><h2>Produkty</h2></caption>
+        <thead>
+            <tr>
+                <th>NAZWA</th>
+                <th>CENA <i>netto [pln]</i></th>
+                <th>VAT</th>
+                <th>DOSTĘPNOŚĆ [szt.]</th></tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td style="text-align: left; ">{{ product.name }}</td>
+                <td style="text-align: right; ">{{ product.price }}</td>
+                <td>{{ product.get_vat_display }}</td><td>{{ product.stock }}</td>
+                <td><a href="{% url 'edit_product' pk=product.pk %}">edytuj</a></td>
+            </tr>
+        {% empty %}
+            <span style="color: red; ">Nie ma żadnych pasujących produktów</span>
+        {% endfor %}
+            <tr><td></td><td></td><td></td><td></td><td><a href="{% url 'add_product' %}">dodaj produkt</a></td></tr>
+        </tbody>
+    </table>
+{% endblock %}

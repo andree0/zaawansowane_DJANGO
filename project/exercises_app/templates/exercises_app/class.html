@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Szkoła podstawowa nr 1 im. Chucka Norrisa.</h1>
+    <h2>Klasa: {{ class_name }}</h2>
+    <h2>Uczniowie:</h2>
+    <ul>
+        {% for student in students %}
+        <li><a href="{% url 'student_details' student.pk %}">{{ student }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

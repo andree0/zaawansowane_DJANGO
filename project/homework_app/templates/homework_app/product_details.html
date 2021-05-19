@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul>
+        <li>NAZWA PRODUKTU: {{ product.name }}</li>
+        <li>OPIS: {{ product.description }}</li>
+        <li>CENA (netto): {{ product.price }} zł</li>
+        <li>VAT: {{ product.get_vat_display }}</li>
+        <li>STAN W MAGAZYNIE (szt.): {{ product.stock }}</li>
+        <li>KATEGORIE PRODUKTU: {% for category in product.categories.all %} {{ category.category_name }} |{% endfor %}</li>
+    </ul>
+{% endblock %}

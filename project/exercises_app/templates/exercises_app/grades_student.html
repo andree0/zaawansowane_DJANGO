@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Uczeń: {{ student }} | Klasa: {{ student.get_school_class_display }}</h2>
+    <h2>Nazwa przedmiotu: {{ subject.name }} | Nauczyciel: {{ subject.teacher_name }}</h2>
+    <h2>Oceny:</h2>
+        <ul>
+            {% for grade in student_grades %}
+                <li>{{ grade.get_grade_display }}</li>
+            {% endfor %}
+        </ul>
+    <h2>Średnia: {{ average }}</h2>
+{% endblock %}

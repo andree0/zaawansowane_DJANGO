@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul>
+        {% for product, b in brutto %}
+            <li><a href="{% url 'product' product_id=product.pk %}">
+                {{ product.name }}</a> | cena brutto: {{ b }} zł</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
